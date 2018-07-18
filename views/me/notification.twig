@@ -1,0 +1,43 @@
+{% extends 'layout.twig' %} {% block body %}
+
+<div class="animated fadeIn">
+  <div class="row">
+    <!-- /.col-->
+    <div class="col-sm-12 col-lg-12">
+    <div class="card">
+    <div class="card-header">
+        Users
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Payload</th>
+                    <th>Trigger Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events%}
+                <tr>
+                    <td scope="row">
+                        {{ event.id }}
+                    </td>
+                    <td>{{ event.title }}</td>
+                    <td>
+                        {{ event.payload }}
+                    </td>
+                    <td>
+                        {{ event.createdAt }}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    </div>
+</div>
+{% endblock %}

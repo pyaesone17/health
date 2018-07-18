@@ -1,0 +1,47 @@
+{% extends 'layout.twig' %} {% block body %}
+
+<div class="animated fadeIn">
+  <div class="row">
+    <!-- /.col-->
+    <div class="col-sm-12 col-lg-12">
+    <div class="card">
+    <div class="card-header">
+        Users
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Action</th>
+                    <th>Monitor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users%}
+                <tr>
+                    <td scope="row">
+                        <a href="/backend/users/{{user.id}}"> {{ user.id }} </a>
+                    </td>
+                    <td>{{ user.username }}</td>
+                    <td>
+                        <a class="btn btn-primary" href="/backend/users/{{user.id}}" role="button">
+                            View
+                        </a>
+                    </td>
+                    <td>
+                        <a class="btn btn-primary" href="/backend/users/{{user.id}}/events" role="button">
+                            Monitor Events
+                        </a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+    </div>
+</div>
+{% endblock %}

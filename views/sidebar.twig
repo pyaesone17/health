@@ -1,0 +1,43 @@
+      <div class="sidebar">
+        <nav class="sidebar-nav">
+          <ul class="nav">
+            {% if user.type=='admin' %}
+              <li class="nav-item">
+                <a class="nav-link" href="/backend/health/dashboard">
+                  <i class="nav-icon icon-speedometer"></i> Dashboard 
+                </a>
+              </li>
+            {% endif %}
+
+            {% if user.type=='user' %}
+              <li class="nav-item">
+                <a class="nav-link" href="/me/dashboard">
+                  <i class="nav-icon icon-speedometer"></i> Dashboard 
+                </a>
+              </li>
+            {% endif %}
+
+            {% if user.type=='admin' %}
+              <li class="nav-item">
+                <a class="nav-link" href="/backend/monitor">
+                  <i class="nav-icon icon-book-open"></i> Monitor</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/backend/users">
+                  <i class="nav-icon icon-user"></i> Users</a>
+              </li>
+            {% endif %}
+            {% if user.type=='user' %}
+              <li class="nav-item">
+                <a class="nav-link" href="/me/notifications">
+                  <i class="nav-icon icon-book-open"></i> Notifications</a>
+              </li>
+            {% endif %}
+            <li class="nav-item">
+              <a class="nav-link" href="/logout">
+              <i class="nav-icon icon-logout"></i> Logout</a>
+            </li>
+          </ul>
+        </nav>
+        <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+      </div>

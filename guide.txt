@@ -1,0 +1,67 @@
+_________________SCHDUELER FOR MONITORING AND TRIGGERING  ____________________________
+
+/scheduler/index.js
+
+It will run cron task to check whether user is inactive yesterday or user archieved the target
+It also check event log to make sure that user won't get notified multiple times
+
+___________________________________ ADMIN ________________________________
+
+username - admin 
+password - admin 
+
+
+Monitor route
+
+to view the dashboard chart for all users
+/backend/health/dashboard
+
+to view the user information
+/backend/users
+/backend/users/:id
+/backend/users/events
+
+to view the monitoring log events for all users
+/backend/monitor
+
+___________________________________ USER ________________________________
+
+username - veve 
+password - legendary16 
+
+to view the dashboard chart for me
+/me/dashboard
+
+to view the notifications
+/me/notifications
+
+
+___________________________________ PROJECT STRUCTURE ________________________________
+
+1. /config is for main configuration
+
+2. /database is for connection
+
+3. /mailer is responsible to send mail 
+
+4. /migrations is to migrate database
+
+5. /models all of the ORM models located
+
+6. /public will serve all of the static assets
+
+7. /routes folder will have all of the routing
+
+8. /scheduler will run cron task for monitoring 
+
+9. /seeders is needed to run fake database
+
+10. /services all of the decouple service located
+
+11. /views for storing the view template for twig engine
+
+___________________________________ TO RUN ________________________________
+
+1. ./start.sh 
+
+2. Import sql data
