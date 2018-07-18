@@ -91,11 +91,19 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'node_modules')));
 
+var authmiddleware = function (req, res, next) {
+  console.log("-------------------user-------------------------")
+  if(! req.user){
+    return res.redirect("/");
+  }
+  next()
+}
+
 app.use('/', auth);
-app.use('/me',me);
-app.use('/backend/users', users);
-app.use('/backend/monitor',monitor);
-app.use('/backend/health',health);
+app.use('/me',authmiddleware,me);
+app.use('/backend/users',authmiddleware, users);
+app.use('/backend/monitor',authmiddleware,monitor);
+app.use('/backend/health',authmiddleware,health);
 app.use('/auth',auth);
 
 app.use('/seed/1', function(){

@@ -33,7 +33,7 @@ router.get("/:id", function(req, res, next) {
         
         walkMonthlyValue = d[1].map(data => data.toJSON().total);
         if (walkMonthlyValue.length !== 0) {
-          totalMonthlyWalk = walkMonthlyValue.reduce(d => d);
+          totalMonthlyWalk = walkMonthlyValue.reduce((a,b) => a+b);
         } else {
           totalMonthlyWalk = 0
         }
@@ -44,14 +44,14 @@ router.get("/:id", function(req, res, next) {
         );
         prevWalkMonthlyValue = d[2].map(data => data.toJSON().total);
         if(prevWalkMonthlyValue.length !== 0 ){
-          totalPrevMonthlyWalk = prevWalkMonthlyValue.reduce(d => d);
+          totalPrevMonthlyWalk = prevWalkMonthlyValue.reduce((a,b) => a+b);
         } else {
           totalPrevMonthlyWalk = 0
         }
 
         todayWalkValue = d[3].map(data => data.toJSON().total);
         if (todayWalkValue.length !== 0) {
-            totalTodayWalk = todayWalkValue.reduce(d => d);
+            totalTodayWalk = todayWalkValue.reduce((a,b) => a+b);
         } else {
             totalTodayWalk = 0;
         }
@@ -59,14 +59,14 @@ router.get("/:id", function(req, res, next) {
         thisYearWalkValue = d[4].map(data => data.toJSON().total);
 
         if(thisYearWalkValue.length!==0){
-          totalThisYearWalk = thisYearWalkValue.reduce(d => d);
+          totalThisYearWalk = thisYearWalkValue.reduce((a,b) => a+b);
         } else {
           totalThisYearWalk = 0
         }
 
         thisWeekWalkValue = d[5].map(data => data.toJSON().total);
         if (thisWeekWalkValue.length !== 0) {
-            totalThisWeekWalk = thisWeekWalkValue.reduce(d => d);
+            totalThisWeekWalk = thisWeekWalkValue.reduce((a,b) => a+b);
         } else {
             totalThisWeekWalk = 0;
         }

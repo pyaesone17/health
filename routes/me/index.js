@@ -31,28 +31,28 @@ router.get("/dashboard", function(req, res, next) {
             moment(data.toJSON().creationDate).format("DD")
         );
         walkMonthlyValue = d[1].map(data => data.toJSON().total);
-        totalMonthlyWalk = walkMonthlyValue.reduce(d => d);
+        totalMonthlyWalk = walkMonthlyValue.reduce((a,b) => a+b);
 
         prevWalkMonthly = d[2].map(data => data.toJSON());
         prevWalkMonthlyKey = d[2].map(data =>
             moment(data.toJSON().creationDate).format("DD")
         );
         prevWalkMonthlyValue = d[2].map(data => data.toJSON().total);
-        totalPrevMonthlyWalk = prevWalkMonthlyValue.reduce(d => d);
+        totalPrevMonthlyWalk = prevWalkMonthlyValue.reduce((a,b) => a+b);
 
         todayWalkValue = d[3].map(data => data.toJSON().total);
         if (todayWalkValue.length !== 0) {
-            totalTodayWalk = todayWalkValue.reduce(d => d);
+            totalTodayWalk = todayWalkValue.reduce((a,b) => a+b);
         } else {
             totalTodayWalk = 0;
         }
 
         thisYearWalkValue = d[4].map(data => data.toJSON().total);
-        totalThisYearWalk = thisYearWalkValue.reduce(d => d);
+        totalThisYearWalk = thisYearWalkValue.reduce((a,b) => a+b);
 
         thisWeekWalkValue = d[5].map(data => data.toJSON().total);
         if (thisWeekWalkValue.length !== 0) {
-            totalThisWeekWalk = thisWeekWalkValue.reduce(d => d);
+            totalThisWeekWalk = thisWeekWalkValue.reduce((a,b) => a+b);
         } else {
             totalThisWeekWalk = 0;
         }
