@@ -111,7 +111,7 @@ async function getYesterdayRecordByUser(userId) {
 
 async function checkAlreadyNotify(userId,eventType) {
     events = await dbcon.query(
-      `SELECT id FROM events WHERE DAY(createdAt) = DAY(CURRENT_DATE()) AND user_id = ${userId} AND type = '${eventType}' `,
+      `SELECT id FROM Events WHERE DAY(createdAt) = DAY(CURRENT_DATE()) AND user_id = ${userId} AND type = '${eventType}' `,
       { model: Record }
     );
 
