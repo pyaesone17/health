@@ -3,6 +3,7 @@ module.exports = (sequelize, DataTypes) => {
     var records = sequelize.define(
         "records",
         {
+            user_id: DataTypes.INTEGER,
             type: DataTypes.STRING,
             sourceName: DataTypes.STRING,
             sourceVersion: DataTypes.STRING,

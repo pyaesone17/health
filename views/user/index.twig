@@ -35,10 +35,16 @@
                             Monitor Events
                         </a>
                     </td>
+                    <td>
+                        <a class="btn btn-primary" href="/backend/users/{{user.id}}/create-record" role="button">
+                            Create Record
+                        </a>
+                    </td>
                 </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <a  class="btn btn-link" href="/backend/users/create" role="button">Create User</a>
     </div>
 </div>
 

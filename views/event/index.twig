@@ -13,6 +13,7 @@
             <thead>
                 <tr>
                     <th>Id</th>
+                    <th>User</th>
                     <th>Name</th>
                     <th>Payload</th>
                     <th>Trigger Time</th>
@@ -24,6 +25,7 @@
                     <td scope="row">
                         {{ event.id }}
                     </td>
+                     <td>{{ event.User.username }}</td>
                     <td>{{ event.title }}</td>
                     <td>
                         {{ event.payload }}

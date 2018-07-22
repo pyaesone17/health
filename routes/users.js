@@ -4,6 +4,7 @@ var dbcon = require("../database/connection");
 var Sequelize = require("sequelize");
 var User = require("../models/user")(dbcon, Sequelize);
 var Event = require("../models/event")(dbcon, Sequelize);
+var Record = require("../models/index").records
 var reportData = require("../services/reportData");
 var moment = require("moment");
 
@@ -14,6 +15,42 @@ router.get("/", function(req, res, next) {
             users: users,
             user: req.user
         })
+    );
+});
+
+/* CREATE users listing. */
+router.get("/create", function(req, res, next) {
+    res.render("user/create")
+});
+
+/* CREATE records listing. */
+router.post("/create", function(req, res, next) {
+    User.create({ 
+        type: 'user',
+        username: req.body.username,
+        firstName: req.body.firstName,
+        lastName: req.body.lastName,
+        email : req.body.email,
+        password: req.body.password
+    }).then(() =>
+        res.redirect('/backend/users')
+    );
+});
+
+/* CREATE VIEW users listing. */
+router.get("/:id/create-record", function(req, res, next) {
+    res.render("user/create-record")
+});
+
+/* CREATE records listing. */
+router.post("/:id/create-record", function(req, res, next) {
+    Record.create({ 
+        user_id: req.params.id,
+        unit: 'count',
+        value: req.body.steps,
+        creationDate: moment(req.body.creationDate).format("YYYY-MM-DD HH:mm:ss")
+    }).then(() =>
+        res.redirect('/backend/users')
     );
 });
 

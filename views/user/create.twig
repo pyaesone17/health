@@ -1,0 +1,40 @@
+{% extends 'layout.twig' %} {% block body %}
+
+<div class="animated fadeIn">
+  <div class="row">
+    <!-- /.col-->
+    <div class="col-sm-12 col-lg-12">
+    <div class="card">
+    <div class="card-header">
+        Users
+    </div>
+    <div class="card-body">
+        <form action="" method="post">
+            <div class="form-group">
+                <label for="nf-email">Email</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter Email..">
+            </div>
+            <div class="form-group">
+                <label for="nf-email">Username</label>
+                <input type="text" name="username" class="form-control" placeholder="Enter username..">
+            </div>
+            <div class="form-group">
+                <label for="nf-email">First Name</label>
+                <input type="text" name="firstName" class="form-control" placeholder="Enter First Name..">
+            </div>
+            <div class="form-group">
+                <label for="nf-email">Last Name</label>
+                <input type="text" name="lastName" class="form-control" placeholder="Enter Last Name..">
+            </div>
+            <div class="form-group">
+                <label for="nf-password">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Enter Password..">
+            </div>
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+    </div>
+</div>
+{% endblock %}

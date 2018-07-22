@@ -65,3 +65,11 @@ ___________________________________ TO RUN ________________________________
 1. ./start.sh 
 
 2. Import sql data
+
+___________________________________ ABOUT SERVER ________________________________
+
+Server is running on Amazon EC2 instance
+
+To run, express js in the background as daemon, I used the PM2 process manager for 
+
+auto restarting and running long live.

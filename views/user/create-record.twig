@@ -1,0 +1,48 @@
+{% extends 'layout.twig' %} {% block body %}
+
+<div class="animated fadeIn">
+  <div class="row">
+    <!-- /.col-->
+    <div class="col-sm-12 col-lg-12">
+    <div class="card">
+    <div class="card-header">
+        Users
+    </div>
+    <div class="card-body">
+        <form  method="post">
+            <div class="form-group">
+                <label for="nf-email">Steps</label>
+                <input 
+                    type="number"  
+                    name="steps" 
+                    class="form-control" 
+                    placeholder="Enter steps.." 
+                    required
+                >
+            </div>
+            <div class="form-group">
+                <label for="nf-email">Creation Date</label>
+                <input 
+                    type="text" 
+                    name="creationDate"
+                    placeholder="Enter creation date.."
+                    class="datepicker form-control" 
+                    required
+                >
+            </div>
+             <button class="btn btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
+
+    </div>
+</div>
+{% endblock %}
+
+{% block js %}
+    <script>
+    $('.datepicker').datepicker({
+        format: 'mm/dd/yyyy'
+    });
+    </script>
+{% endblock %}

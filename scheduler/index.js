@@ -8,15 +8,13 @@ var sendMail = require("../mailer/send");
 let reminderJson = {
     title: "Reminder for inactivity",
     type: "inactivity",
-    payload: "You are inactivity for one day.",
-    user_id: 1
+    payload: "You are inactivity for one day."
 };
 
 let targetAchieved = {
     title: "Congratulations for achievement",
     type: "achieved",
     payload: "You have achieved the target of 10000 steps today. Get rest.",
-    user_id: 1
 };
 
 var j = schedule.scheduleJob("* * * * *", function() {
@@ -44,12 +42,13 @@ function notifyUserForAchievedGoal() {
                 if (record[0].dataValues.total > 10000) {
                     checkAlreadyNotify(user.id,"achieved").then(notifications => {
                         if (notifications.length === 0) {
+                            targetAchieved.user_id = user.id
                             console.log(targetAchieved);
-                            sendMail(
-                                user.email,
-                                targetAchieved.title,
-                                targetAchieved.payload
-                            );
+                            // sendMail(
+                            //     user.email,
+                            //     targetAchieved.title,
+                            //     targetAchieved.payload
+                            // );
                             Event.create(targetAchieved);
                         }
                     });
@@ -67,7 +66,7 @@ function notifyUserForInactive() {
     }).then(users => {
         users.forEach(user => {
             getYesterdayRecordByUser(user.id).then(record => {
-                console.log("Running schduler for inactive user");
+                console.log("Running schduler for inactive user "+user.id);
                 console.log('-----------------------------')
                 console.log(record.length)
                 console.log('-----------------------------')
@@ -78,12 +77,13 @@ function notifyUserForInactive() {
                                 notifications.length
                         );
                         if (notifications.length === 0) {
+                            reminderJson.user_id = user.id
                             console.log(reminderJson);
-                            sendMail(
-                                user.email,
-                                reminderJson.title,
-                                reminderJson.payload
-                            );
+                            // sendMail(
+                            //     user.email,
+                            //     reminderJson.title,
+                            //     reminderJson.payload
+                            // );
                             Event.create(reminderJson);
                         }
                     });
