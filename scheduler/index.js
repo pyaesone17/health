@@ -44,11 +44,11 @@ function notifyUserForAchievedGoal() {
                         if (notifications.length === 0) {
                             targetAchieved.user_id = user.id
                             console.log(targetAchieved);
-                            // sendMail(
-                            //     user.email,
-                            //     targetAchieved.title,
-                            //     targetAchieved.payload
-                            // );
+                            sendMail(
+                                user.email,
+                                targetAchieved.title,
+                                targetAchieved.payload
+                            );
                             Event.create(targetAchieved);
                         }
                     });
@@ -79,11 +79,11 @@ function notifyUserForInactive() {
                         if (notifications.length === 0) {
                             reminderJson.user_id = user.id
                             console.log(reminderJson);
-                            // sendMail(
-                            //     user.email,
-                            //     reminderJson.title,
-                            //     reminderJson.payload
-                            // );
+                            sendMail(
+                                user.email,
+                                reminderJson.title,
+                                reminderJson.payload
+                            );
                             Event.create(reminderJson);
                         }
                     });
