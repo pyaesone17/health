@@ -7,6 +7,10 @@ var Event = require("../models/event")(dbcon, Sequelize);
 var Record = require("../models/index").records
 var reportData = require("../services/reportData");
 var moment = require("moment");
+var parseString = require("xml2js").parseString;
+var fs = require("fs");
+var multer = require("multer");
+var upload = multer({ dest: 'uploads/' })
 
 /* GET users listing. */
 router.get("/", function(req, res, next) {
@@ -53,6 +57,45 @@ router.post("/:id/create-record", function(req, res, next) {
         res.redirect('/backend/users')
     );
 });
+
+/* CREATE records listing. */
+router.get("/:id/export-zip", function(req, res, next) {
+    res.render("user/export-zip")
+});
+
+
+/* CREATE records listing. */
+router.post("/:id/export-zip",upload.single('file'), function(req, res, next) {
+    fs.readFile(req.file.path, { encoding: "utf-8" }, function(err, data) {
+        parseString(data, function(err, result) {
+            let data = [];
+    
+            result.HealthData.Record.forEach(function(record) {
+                $ = record.$;
+                console.log($);
+                $.creationDate = moment(
+                    $.creationDate,
+                    "YYYY-MM-DD HH:mm:ss Z"
+                ).format("YYYY-MM-DD HH:mm:ss");
+                $.startDate = moment($.startDate, "YYYY-MM-DD HH:mm:ss Z").format(
+                    "YYYY-MM-DD HH:mm:ss"
+                );
+                $.endDate = moment($.endDate, "YYYY-MM-DD HH:mm:ss Z").format(
+                    "YYYY-MM-DD HH:mm:ss"
+                );
+                $.user_id = 1;
+                try{
+                    Record.create($)
+                } catch(e){
+
+                }
+            });
+
+            res.redirect('/backend/users')
+        });
+    });
+});
+
 
 /* GET users details. */
 router.get("/:id", function(req, res, next) {

@@ -1,0 +1,24 @@
+{% extends 'layout.twig' %} {% block body %}
+
+<div class="animated fadeIn">
+  <div class="row">
+    <!-- /.col-->
+    <div class="col-sm-12 col-lg-12">
+    <div class="card">
+    <div class="card-header">
+        Export Zip
+    </div>
+    <div class="card-body">
+        <form method="post" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="nf-email">Export Zip</label>
+                <input type="file" name="file" />
+            </div>
+             <button class="btn btn-primary" type="submit">Export</button>
+        </form>
+    </div>
+</div>
+
+    </div>
+</div>
+{% endblock %}
